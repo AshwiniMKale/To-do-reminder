@@ -5,6 +5,7 @@ env/
 __pycache__/
 *.__pycache__
 .vscode/
-
+new/
+new.pub/
 .DS_store
 
