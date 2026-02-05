@@ -1,4 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel,EmailStr
+from typing import Optional
+from datetime import datetime
 
 class TaskCreate(BaseModel):
     title:str
@@ -10,4 +12,28 @@ class TaskResponse(TaskCreate):
     completed:bool
 
     class Config:
-        orm_mode=True    
+        from_attributes=True   
+
+class UserCreate(BaseModel):
+    email:EmailStr
+    hashed_password:str
+
+class UserOut(BaseModel):
+    id:int
+    email:EmailStr
+    is_active:bool
+    created_at:datetime
+
+    class Config:
+        from_attributes=True
+
+class Token(BaseModel):
+    access_token:str
+    token_type:str
+
+    
+
+class TokenData(BaseModel):
+    email:Optional[str]=None    
+
+   
